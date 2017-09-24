@@ -1,0 +1,87 @@
+% Assignments/Projects main file.
+%\makeindex
+%\documentclass[11pt,letterpaper]{report}
+%\documentclass[11pt,letterpaper]{article}
+%\documentclass[11pt,letterpaper,draft]{article}
+\documentclass{easychair}
+%\documentclass[draft]{easychair}
+
+% ------- External Files -----------------
+
+\input{../commands} 
+
+% ------------------------
+% ------- Common Assignment Related Commands -----------------
+\newcommand{\duedate}{\textcolor[rgb]{1,0,0}{\faCalendarCheckO
+ \textbf{ Due date: October-02-2017} \faCalendarCheckO	}}
+\newcommand{\asngtitle}{ Assignment \#2}
+\newcommand{\semester}{Fall 2017}
+%---------------------------------------------------------------
+
+%\makeindex
+%-------------------------------------------------------------
+% Internet II - A2:
+\begin{document}
+           
+           
+% -------------------- Document Info ---------------------------------------------------------
+\title{\courseinternetII \\\textcolor[rgb]{0,0,1}{\asngtitle}}
+\titlerunning {\courseinternetII: \semester \hspace{1cm}\asngtitle}
+
+\author
+{	\\ \faUniversity  { Vanier College } \faUniversity\\  \\   
+    Faculty of Science and Technology\\		
+    Computer Science Technology Department\\
+    Contact: via MIO \\ \\ \duedate 
+}
+\authorrunning{\emph{Teacher: Sleiman Rabah}}
+
+\maketitle
+\vskip .6in
+    % Start of the revision history table
+%    \begin{center}   
+    \hrule 
+       \begin{versionhistory}
+        \centering        \vhEntry{1.0}{September 19, 2017}{S.R.}{Initial handout}
+        \centering        \vhEntry{1.1}{\today}{S.R.}{Added additional instructions surrounded by a set of \mycustomshape{darkestred}{\Rectangle}{~} shapes}
+    %        \vhEntry{1.1}{23.01.04}{DP|JPW}{correction}
+    %        \vhEntry{1.2}{03.02.04}{DP|JPW}{revised after review}
+        \end{versionhistory}
+        \hrule
+%    \end{center}
+    \vskip .3in
+    % ---End Doc Info --------------------------------------------------------------------------
+    
+    
+    \tableofcontents
+    %\listoffigures
+    %\lstlistoflistings
+    %\listoftables
+    \clearpage
+    
+%    \hrule
+    %  Example
+%    \begin{fquote}
+%        [William Ernest Henley][Invictus][1888]I am the master of my fate: I am the captain of my soul \xr{henley1888book}.
+%    \end{fquote}
+%    \hrule
+%    \vskip .5in
+    
+
+
+    % -------------- Source file    ---------------------------------------------------------
+%    \input{420-410/A17/Assingment-1}
+    \input{420-410/A17/Assingment-2}
+     
+
+
+% -----------------------------------------------------------------------------
+% References
+\bibliographystyle{ieeetr}
+\bibliography{references}
+
+% -----------------------------------------------------------------------------
+% Index
+%\printindex
+
+\end{document}
