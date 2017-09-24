@@ -1,0 +1,245 @@
+%--------------------------------------
+%--- Summary of features/commands:
+%-- Colored notes in PDF.
+%-- parametrized list environments.
+%-- colored shapes.
+%-   custom text hightlight.
+%-------------------
+
+
+%----------------------------------------------------------------------------------
+%-----	Cross-reference commands.
+%----------------------------------------------------------------------------------
+\newcommand{\xf}[1]{Figure~\ref{#1}}
+\newcommand{\xp}[1]{page~\pageref{#1}}
+\newcommand{\xs}[1]{Section~\ref{#1}}
+\newcommand{\xa}[1]{Appendix~\ref{#1}}
+\newcommand{\xc}[1]{Chapter~\ref{#1}}
+\newcommand{\xt}[1]{Table~\ref{#1}}
+\newcommand{\xl}[1]{Listing~\ref{#1}}
+\newcommand{\xr}[1]{\cite{#1}}
+%
+\newcommand{\file}[1]{\url{#1}\index{Files!#1}}
+\newcommand{\tool}[1]{\texttt{#1}\index{Tools!#1}}
+\newcommand{\option}[1]{\texttt{#1}\index{Options!#1}}
+\newcommand{\api}[1]{\texttt{#1}\index{API!#1}}
+\newcommand{\apipackage}[1]{\url{#1}\index{API!Packages!#1}\index{Packages!#1}}
+\newcommand{\datatype}[1]{\texttt{#1}\index{Type!#1}}
+\newcommand{\codesegment}[1]{\texttt{\##1}\index{Segments!\##1}}
+
+%----------------------------------------------------------------------------------
+%-----@spacing	Spacing Commands.
+%----------------------------------------------------------------------------------
+\newcommand{\vspbpara}{\vspace*{.09in}}    
+\newcommand{\customvspace}{\vspace{.5cm}}    
+%\titlespacing{\section}{0pt}{12pt}{9pt}
+
+%----------------------------------------------------------------------------------
+%-----@lists	Lists-related Commands.
+%----------------------------------------------------------------------------------
+% Disable spaces between list items
+% E.g.,: #1: spacing option, [noitemsep], etc.
+\newcommand{\beelistspacesettings}[1]{
+\setlist{#1} 
+}    
+%------------- Custom list with adjustable space between list items --------
+%-----
+% #1: list items
+% #2: list type [itemize|enumerate]
+% #3: space size, e.g., 8pt
+% #4: label character, e.g.,: --
+\newcommand{\beelist}[4]
+{
+    \begin{#2}[label=#4, itemsep=#3,parsep=0pt,topsep=1pt,partopsep=4pt]
+           #1
+    \end{#2}
+}
+%---- List enum options
+\newcommand{\beelstarabic}{\arabic*}
+\newcommand{\beelstalpha}{\alph*}
+%-----
+%----------------------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------------------
+%-----@section:			Section Commands.
+%----------------------------------------------------------------------------------
+% Creates an underlined non-numbered section header.
+\newcommand{\customsection}[1]{\section*{\underline{#1}}}
+
+%-------- NOTES commands ------ 
+%-- Notes commands
+% Select what to do with command \comment:  
+% \newcommand{\comment}[1]{}  %comment not showed
+% e.g,: \comment{This is a simple comment between text} 
+% \todo{This is a to do note at margin}
+\newcommand{\beecomment}[1]
+{
+   \par {\bfseries \color{blue} #1 \par}
+} %comment showed
+
+
+
+\newcommand{\vtitlespacing}{\vskip 0.1cm}
+%\newcommand{\paragraphentry}[1]{\noindent \textbf{\Large \underline{#1}} }
+
+
+%----------------------------------------------------------------------------------
+%-----@color:		Custom colors definitions, text and background colors utils.
+%----------------------------------------------------------------------------------
+%--  more colors codes can be found here: http://latexcolor.com/
+%-- usage: {\color{declared-color} some text}. e.g.,: {\color{darkblue}{ This text will appear darkblue-colored}}
+%-
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.7,0,0}
+\definecolor{darkgreen}{rgb}{0,.6,0}
+\definecolor{darkestred}{rgb}{.8,.1,0}
+\definecolor{red}{rgb}{.98,0,0}
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+\definecolor{lightlightgray}{gray}{0.93}
+\definecolor{darkorange}{rgb}{255,140,0}
+\definecolor{fluorescentyellow}{rgb}{0.8, 1.0, 0.0}
+\definecolor{darkyellow}{rgb}{1,1,0.34}
+\definecolor{lightyellow}{rgb}{1,1,0.6}
+
+
+%--- Highlighting text.
+%- background color (highlight) command.
+\newcommand{\highlight}[1]{\hl{#1}}
+
+%- Highlight text with a custom color.
+%- usage:  \mycustomhl{declared-color}{some text}
+\newcommand{\mycustomhl}[2]{{\sethlcolor{#1}\hl{#2}}}
+
+%----------------------------------------------------------------------------------
+%-----@shapes	My custom-colored shapes.
+%----------------------------------------------------------------------------------
+
+%-- Creates a custom-colored shape
+%-- usage: {\mycustomshape{declared-color}{shape-command}{spacing-command} 
+%-- e.g.,: {\mycustomshape{darkblue}{\Rectangle}{~}. 
+\newcommand{\mycustomshape}[3]
+{
+    {\color{#1}{#2}}{#3}  
+}
+
+
+%----------------------------------------------------------------------------------
+%-----@listing	Source Code Listing.
+%----------------------------------------------------------------------------------
+ \DeclareCaptionFont{white}{\color{white}}
+ \DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+ \captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+ 
+ \VerbatimFootnotes % Required, otherwise verbatim does not work in footnotes!
+
+%
+% Command for adjuctiong tabled row header (left, center or right)
+% Usage example: \thead{<Header text 1>} & \thead{<Header 2>} & \thead{<Header 3>} & \thead{<Header 4>} 
+\newcommand*{\thead}[1]{\multicolumn{1}{l}{\bfseries #1}}
+
+
+\newcommand{\sourcefloat}[3]
+{
+	\begin{figure}[!hp]
+		\begin{centering}
+			\begin{minipage}{0.5\textwidth}
+				\source{#1}
+			\end{minipage}
+			\caption{\small{#3}}
+			\label{#2}
+		\end{centering}
+	\end{figure}
+}
+
+\newcommand{\mytodo}[0]
+{
+	{\Large \[TODO\]}
+}
+
+%----------------------------------------------------------------------------------
+%-----	Utils.
+%----------------------------------------------------------------------------------
+
+%- Bold & italic text.
+\newcommand{\mytbi}[1]{\textbf{\textit{#1}}}
+
+
+%-- Specical characters.
+\newcommand{\dashnospace}[0]{\--}
+\newcommand{\dashwithspace}[0]{\-- }
+\newcommand{\tab}[1]{\hspace{#1pt}}
+\newcommand{\shrule}[0]{\vspace{3pt}\hrule\vspace{6pt}}
+\newcommand{\ehrule}[0]{\vspace{6pt}\hrule\vspace{3pt}}
+\newcommand{\source}[1]
+{
+    {\shrule}
+    \scriptsize
+    #1
+    \normalsize
+    \hrule
+}
+
+
+
+%
+% Def
+%
+\newcommand{\statement}[2]
+{
+    \vspace{7pt}
+    \shrule
+    {\bf #1}
+    
+    #2
+    \ehrule
+    \vspace{7pt}
+}
+
+% \newcommand{\proposition}[2]
+\newcommand{\sproposition}[2]
+{
+    \statement{Proposition #1}{#2}
+}
+
+% \newcommand{\definition}[2]
+\newcommand{\sdefinition}[2]
+{
+    \statement{Definition #1}{#2}
+}
+
+% \newcommand{\axiom}[2]
+\newcommand{\saxiom}[2]
+{
+    \statement{Axiom #1}{#2}
+}
+
+% \newcommand{\theorem}[2]
+\newcommand{\stheorem}[2]
+{
+    \statement{Theorem #1}{#2}
+}
+
+\lstset{
+    %language=bash,                          % Code langugage
+    basicstyle=\ttfamily,                   % Code font, Examples: \footnotesize, \ttfamily
+    keywordstyle=\color{OliveGreen},        % Keywords font ('*' = uppercase)
+    commentstyle=\color{gray},              % Comments font
+    numbers=left,                           % Line nums position
+    numberstyle=\tiny,                      % Line-numbers fonts
+    stepnumber=1,                           % Step between two line-numbers
+    numbersep=5pt,                          % How far are line-numbers from code
+    backgroundcolor=\color{lightlightgray}, % Choose background color
+    frame=none,                             % A frame around the code
+    tabsize=2,                              % Default tab size
+    captionpos=t,                           % Caption-position = bottom
+    breaklines=true,                        % Automatic line breaking?
+    breakatwhitespace=false,                % Automatic breaks only at whitespace?
+    showspaces=false,                       % Dont make spaces visible
+    showtabs=false,                         % Dont make tabls visible
+    columns=flexible,                       % Column format
+    morekeywords={__global__, __device__},  % CUDA specific keywords
+}
+
+
