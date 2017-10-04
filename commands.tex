@@ -6,6 +6,9 @@
 %-   custom text hightlight.
 %-------------------
 
+% @see: https://mirror.hmc.edu/ctan/macros/latex/contrib/todonotes/todonotes.pdf
+% @see: https://tex.stackexchange.com/questions/9796/how-to-add-todo-notes 
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
 
 %----------------------------------------------------------------------------------
 %-----	Cross-reference commands.
@@ -69,7 +72,11 @@
 % Creates an underlined non-numbered section header.
 \newcommand{\customsection}[1]{\section*{\underline{#1}}}
 
-%-------- NOTES commands ------ 
+
+%----------------------------------------------------------------------------------
+%-------- TODO notes and comments in LaTeX documents ------ 
+%----------------------------------------------------------------------------------
+
 %-- Notes commands
 % Select what to do with command \comment:  
 % \newcommand{\comment}[1]{}  %comment not showed
@@ -79,7 +86,19 @@
 {
    \par {\bfseries \color{blue} #1 \par}
 } %comment showed
+%--
+%-------- : Different notes colors: --------------------------------------------------------------
+%--  TODO NOTES related colors.
+\newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+\newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+\newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+\newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+%-- you can use this command if whether you want to show (toogle) the notes in the resulting document or not
+% by changing remove the ''disable'' option below. 
+\newcommandx{\pinnabletodo}[2][1=]{\todo[disable,#1]{#2}}
 
+% Custom inline todo notes.
+\newcommand{\inlinetodo}[1]{\todo[inline]{#1}}
 
 
 \newcommand{\vtitlespacing}{\vskip 0.1cm}
