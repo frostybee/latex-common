@@ -51,12 +51,14 @@
 \newcommand{\beelist}[4]
 {
     \begin{#2}[label=#4, itemsep=#3,parsep=0pt,topsep=1pt,partopsep=4pt]
-           #1
+           #1  % <-- list content
     \end{#2}
 }
-%---- List enum options
+%---- List enum options ---- 
+%-- Numbering style.
 \newcommand{\beelstarabic}{\arabic*}
 \newcommand{\beelstalpha}{\alph*}
+
 %-----
 %----------------------------------------------------------------------------------
 
@@ -90,6 +92,7 @@
 %--  more colors codes can be found here: http://latexcolor.com/
 %-- usage: {\color{declared-color} some text}. e.g.,: {\color{darkblue}{ This text will appear darkblue-colored}}
 %-
+\definecolor{darkestblue}{rgb}{0.0, 0.0, 0.55}
 \definecolor{darkblue}{rgb}{0,0,.6}
 \definecolor{darkred}{rgb}{.7,0,0}
 \definecolor{darkgreen}{rgb}{0,.6,0}
@@ -102,7 +105,7 @@
 \definecolor{fluorescentyellow}{rgb}{0.8, 1.0, 0.0}
 \definecolor{darkyellow}{rgb}{1,1,0.34}
 \definecolor{lightyellow}{rgb}{1,1,0.6}
-
+\definecolor{coolblack}{rgb}{0.0, 0.18, 0.39}
 
 %--- Highlighting text.
 %- background color (highlight) command.
@@ -159,7 +162,7 @@
 }
 
 %----------------------------------------------------------------------------------
-%-----	Utils.
+%-----@utlis 	A bunch of utilities .
 %----------------------------------------------------------------------------------
 
 %- Bold & italic text.
@@ -180,7 +183,6 @@
     \normalsize
     \hrule
 }
-
 
 
 %
