@@ -5,7 +5,7 @@
 %-- colored shapes.
 %--- custom text hightlight.
 %-------------------
-
+%\include{pkg-includes}
 
 %----------------------------------------------------------------------------------
 %-----	Cross-reference commands.
@@ -123,6 +123,9 @@
 \definecolor{darkyellow}{rgb}{1,1,0.34}
 \definecolor{lightyellow}{rgb}{1,1,0.6}
 \definecolor{coolblack}{rgb}{0.0, 0.18, 0.39}
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
 
 %--- Highlighting text.
 %- background color (highlight) command.
@@ -189,7 +192,7 @@
 %-- Specical characters.
 \newcommand{\dashnospace}[0]{\--}
 \newcommand{\dashwithspace}[0]{\-- }
-\newcommand{\tab}[1]{\hspace{#1pt}}
+\newcommand{\tab}[1]{\hspace*{#1}}
 \newcommand{\shrule}[0]{\vspace{3pt}\hrule\vspace{6pt}}
 \newcommand{\ehrule}[0]{\vspace{6pt}\hrule\vspace{3pt}}
 \newcommand{\source}[1]
@@ -240,25 +243,65 @@
     \statement{Theorem #1}{#2}
 }
 
-\lstset{
-    %language=bash,                          % Code langugage
-    basicstyle=\ttfamily,                   % Code font, Examples: \footnotesize, \ttfamily
-    keywordstyle=\color{OliveGreen},        % Keywords font ('*' = uppercase)
-    commentstyle=\color{gray},              % Comments font
-    numbers=left,                           % Line nums position
-    numberstyle=\tiny,                      % Line-numbers fonts
-    stepnumber=1,                           % Step between two line-numbers
-    numbersep=5pt,                          % How far are line-numbers from code
-    backgroundcolor=\color{lightlightgray}, % Choose background color
-    frame=none,                             % A frame around the code
-    tabsize=2,                              % Default tab size
-    captionpos=t,                           % Caption-position = bottom
-    breaklines=true,                        % Automatic line breaking?
-    breakatwhitespace=false,                % Automatic breaks only at whitespace?
-    showspaces=false,                       % Dont make spaces visible
-    showtabs=false,                         % Dont make tabls visible
-    columns=flexible,                       % Column format
-    morekeywords={__global__, __device__},  % CUDA specific keywords
+%----------------------------------------------------------------------------------
+%-----@listing 	Various language-related listing configurations.
+%----------------------------------------------------------------------------------
+%-- JavaScript
+%- @see: https://tex.stackexchange.com/questions/89574/language-option-supported-in-listings
+\lstdefinelanguage{JavaScript}{
+    keywords={break, case, catch, continue, debugger, default, delete, do, else, false, finally, for, function, if, in, instanceof, new, null, return, switch, this, throw, true, try, typeof, var, void, while, with},
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morestring=[b]',
+    morestring=[b]",
+    ndkeywords={class, export, boolean, throw, implements, import, this},
+    keywordstyle=\color{blue}\bfseries,
+    ndkeywordstyle=\color{darkgray}\bfseries,
+    identifierstyle=\color{black},
+    commentstyle=\color{darkgreen}\ttfamily,
+    stringstyle=\color{red}\ttfamily,
+    sensitive=true
+}
+%-- Command to set the JavaScript language settings.
+\newcommand{\lstsetjavascript}{
+    \lstset{
+        language=JavaScript,
+        backgroundcolor=\color{lightgray},
+        extendedchars=true,
+        basicstyle=\footnotesize\ttfamily,
+        showstringspaces=false,
+        showspaces=false,
+        numbers=left,
+        numberstyle=\footnotesize,
+        numbersep=9pt,
+        tabsize=2,
+        breaklines=true,
+        showtabs=false,
+        captionpos=b
+    }
+}
+
+\newcommand{\lstsetbash}{
+    \lstset{
+        language=bash,                          % Code langugage
+        basicstyle=\ttfamily,                   % Code font, Examples: \footnotesize, \ttfamily
+        keywordstyle=\color{OliveGreen},        % Keywords font ('*' = uppercase)
+        commentstyle=\color{gray},              % Comments font
+        numbers=left,                           % Line nums position
+        numberstyle=\tiny,                      % Line-numbers fonts
+        stepnumber=1,                           % Step between two line-numbers
+        numbersep=5pt,                          % How far are line-numbers from code
+        backgroundcolor=\color{lightlightgray}, % Choose background color
+        frame=none,                             % A frame around the code
+        tabsize=2,                              % Default tab size
+        captionpos=t,                           % Caption-position = bottom
+        breaklines=true,                        % Automatic line breaking?
+        breakatwhitespace=false,                % Automatic breaks only at whitespace?
+        showspaces=false,                       % Dont make spaces visible
+        showtabs=false,                         % Dont make tabls visible
+        columns=flexible,                       % Column format
+        morekeywords={__global__, __device__},  % CUDA specific keywords
+    }
 }
 
 
