@@ -187,7 +187,7 @@
 \def\@PaperFormat{letterpaper}
 
 \newif\ifletterpaper
-\newif\ifafourpaper
+\newif\ifafourpaperw
 \newif\ifcustompaper
 
 \letterpapertrue
